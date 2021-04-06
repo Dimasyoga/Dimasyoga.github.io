@@ -44,7 +44,7 @@ disqus: dimyog
 # google_analytics: UA-43339302-11
 
 # For newer "GA4" analytics, use the following instead of the "UA" entry above
-#google_analytics_ga4: G-GABC1DEFG
+google_analytics_ga4: G-Q6QX3F1WZJ
 
 # Your website URL (e.g. http://amitmerchant1990.github.io or http://www.amitmerchant.com)
 # Used for Sitemap.xml and your RSS feed
