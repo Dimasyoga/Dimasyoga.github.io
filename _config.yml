@@ -3,16 +3,16 @@
 #
 
 # Name of your site (displayed in the header)
-name: Reverie
+name: Dimas Yoga
 
 # Name of the author
-author: Amit Merchant
+author: Dimas Yoga
 
 # Short bio or description (displayed in the header)
-description: An elegant Jekyll theme
+description: My personal blog to share my mind
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
-avatar: /images/reverie.png
+avatar: /images/myLogo.png
 
 #
 # Flags below are optional
@@ -21,12 +21,12 @@ avatar: /images/reverie.png
 # Includes an icon in the footer for each username you enter
 footer-links:
   dribbble:
-  email: 
+  email: dimasyogapra@gmail.com
   facebook:
   flickr:
-  github: 
+  github: https://github.com/Dimasyoga
   instagram:
-  linkedin: 
+  linkedin: https://www.linkedin.com/in/dimasyogapra/
   pinterest:
   rss: rss
   twitter: 
