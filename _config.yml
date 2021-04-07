@@ -61,7 +61,7 @@ enforce_ssl: https://dimasyoga.github.io
 # !! You don't need to change any of the configuration flags below !!
 #
 
-permalink: /:title/
+permalink: /blogs/:title/
 
 # The release of Jekyll Now that you're using
 version: v1.2.0
@@ -90,7 +90,7 @@ plugins:
 include: ['_pages']
 
 paginate: 6
-paginate_path: /page:num/
+paginate_path: /blogs/page:num/
 
 # Exclude these files from your production _site
 exclude:

@@ -20,7 +20,6 @@ layout: default
     </article>
   {% endfor %}
 
-  <!-- pagination -->
   {% if paginator.total_pages > 1 %}
   <div class="pagination">
     {% if paginator.previous_page %}
@@ -33,7 +32,7 @@ layout: default
       {% if page == paginator.page %}
         <span class="webjeda">{{ page }}</span>
       {% elsif page == 1 %}
-        <a href="{{ '/' | prepend: site.baseurl | replace: '//', '/' }}">{{ page }}</a>
+        <a href="{{ '/blogs' | prepend: site.baseurl | replace: '//', '/' }}">{{ page }}</a>
       {% else %}
         <a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
       {% endif %}
