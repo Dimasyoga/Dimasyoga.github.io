@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  Why did I end up writing a blog
+author: Dimas Yoga
 categories: [Misc]
 ---
 
