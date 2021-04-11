@@ -4,6 +4,9 @@ title: Search
 permalink: /search/
 ---
 
+<div id="centered">
+    <a href="{{ site.baseurl }}/categories">List of post based on categories</a>
+</div>
 
 <div id="search-container">
     <input type="text" id="search-input" placeholder="Search through the blog posts...">
