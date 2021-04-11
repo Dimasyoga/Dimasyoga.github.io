@@ -38,7 +38,7 @@ function init() {
 
     // CAMERA
 
-    camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 1500 );
+    camera = new THREE.PerspectiveCamera( 45, 2, 1, 1500 );
     camera.position.set( 0, 400, 700 );
 
     cameraTarget = new THREE.Vector3( 0, 150, 0 );
@@ -58,8 +58,8 @@ function init() {
     scene.add( pointLight );
 
     materials = [
-        new THREE.MeshPhongMaterial( { color: 0xffffff, flatShading: true } ), // front
-        new THREE.MeshPhongMaterial( { color: 0xffffff } ) // side
+        new THREE.MeshPhongMaterial( { color: 0x011152, flatShading: true } ), // front
+        new THREE.MeshPhongMaterial( { color: 0x011152 } ) // side
     ];
 
     group = new THREE.Group();
@@ -81,7 +81,7 @@ function init() {
 
     renderer = new THREE.WebGLRenderer( { antialias: true, alpha: true } );
     renderer.setPixelRatio( window.devicePixelRatio );
-    renderer.setSize( container.clientWidth, window.innerHeight * 0.5 );
+    renderer.setSize( container.clientWidth, container.clientWidth * 0.5 );
     container.appendChild( renderer.domElement );
 
     // EVENTS
