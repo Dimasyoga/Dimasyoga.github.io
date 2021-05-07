@@ -31,6 +31,7 @@ let windowHalfX = window.innerWidth / 2;
 
 init();
 animate();
+window.addEventListener("resize", onWindowsResize);
 
 function init() {
 
@@ -212,4 +213,8 @@ function render() {
     renderer.clear();
     renderer.render( scene, camera );
 
+}
+
+function onWindowsResize(){
+    renderer.setSize( container.clientWidth, container.clientWidth * 0.5 );
 }

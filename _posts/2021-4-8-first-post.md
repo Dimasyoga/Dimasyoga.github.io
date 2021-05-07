@@ -5,9 +5,7 @@ author: Dimas Yoga
 categories: [Misc]
 ---
 
-Hi everyone !!!
-
-So I am finally got to write my first blog post. Just so you know, I want to write a blog since 2 or 3 years ago, but because I am a very busy person I ended up putting off that plan and doing something else (well, not really busy, just bad time management). Now after I am done with my college life and my thesis project, I have a lot of free time which makes me stressed because I don't know what to do and this coronavirus pandemic still hasn't disappeared. So I thought continuing with my plans for blogging would be the perfect activity for now.
+Hi everyone !!!. So I am finally got to write my first blog post. Just so you know, I want to write a blog since 2 or 3 years ago, but because I am a very busy person I ended up putting off that plan and doing something else (well, not really busy, just bad time management). Now after I am done with my college life and my thesis project, I have a lot of free time which makes me stressed because I don't know what to do and this coronavirus pandemic still hasn't disappeared. So I thought continuing with my plans for blogging would be the perfect activity for now.
 
 What I enjoy about creating a personal blog is not the writing part, but the process of building a website: what to use, what are the pros and cons of using this or that, where to deploy, etc. I ended up spending most of my time reading documentation about [jekyll](https://jekyllrb.com/) (a static site generator I used for this website) such as how to configure it, what else it can do, and much more. Yes, I think I'm the typical tech geek who is always asked to fix computers or hack Facebook accounts. But I think my intention to write a blog at first was as a means for me to practice my writing skills, so I had to start thinking about what content I should write to fill my personal blog.
 
