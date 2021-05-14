@@ -15,13 +15,17 @@
 
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
-#content {
+.content {
   display: flex;
   justify-content: center;
 }
 
-#centered{
+.centered{
   text-align: center;
+}
+
+.entry {
+  text-align: justify;
 }
 
 html {

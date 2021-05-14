@@ -35,7 +35,7 @@ window.addEventListener("resize", onWindowsResize);
 
 function init() {
 
-    container = document.querySelector( '#content' );
+    container = document.querySelector( '.content' );
 
     // CAMERA
 

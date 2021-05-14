@@ -4,7 +4,7 @@ title: Search
 permalink: /search/
 ---
 
-<div id="centered">
+<div class="centered">
     <a href="{{ site.baseurl }}/categories">List of post based on categories</a>
 </div>
 
