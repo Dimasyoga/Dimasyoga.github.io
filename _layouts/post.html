@@ -22,6 +22,12 @@ layout: default
       {% endfor %}
     </div>
   </div>
+
+  {% if page.image %}
+    <div class="centered">
+      <img src={{ page.image }} alt="image"/>
+    </div>
+  {% endif %}
     
   <div class="entry">
     {{ content }}

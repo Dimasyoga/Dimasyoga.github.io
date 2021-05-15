@@ -9,9 +9,16 @@ layout: default
         <h1>{{ post.title }}</h1>
 
         <div>
-          <p class="post_date">{{ post.date | date: "%B %e, %Y" }}</p>
+          <p class="post_date">{{post.author}}  ·  {{ post.date | date: "%B %e, %Y" }}</p>
         </div>
       </a>
+
+      {% if post.image %}
+        <div class="centered">
+          <img src={{ post.image }} alt="image"/>
+        </div>
+      {% endif %}
+
       <div class="entry">
         {{ post.excerpt }}
       </div>

@@ -2,7 +2,8 @@
 layout: post
 title:  Surveillance Camera With ESP32
 author: Dimas Yoga
-categories: [esp32]
+categories: [esp32, parking system]
+image: '/images/esp32cam/cover-image.jpg'
 ---
 
 A few months ago, I develop a surveillance camera for my undergraduate thesis project. The surveillance camera I developed will be used to take pictures of parking lots, and here I will tell you how the development process take place.
@@ -69,7 +70,7 @@ The PCB is used for assembly the other electronic component like voltage regulat
 
 ![PCB 3D Layout](/images/esp32cam/PCB-layout-3d.png)
 
-![Final result](/images/esp32cam/implementation.png)
+![Final result](/images/esp32cam/implementation.jpg)
 
 ### Casing design
 
@@ -77,7 +78,7 @@ I use Solidworks to design this casing and use 3d print PLA to manufacture this 
 
 ![Casing Design](/images/esp32cam/Casing-design.png)
 
-![Casing Implementation Result](/images/esp32cam/Casing-implementation.png)
+![Casing Implementation Result](/images/esp32cam/Casing-implementation.jpg)
 
 ## Conclusion
 
@@ -85,8 +86,8 @@ The finished camera has dimensions of 7.78 x 2.90 x 4.55 cm and weighs 78 grams 
 
 I really enjoyed the process of working on this camera project. I learned many new things, especially in the development of the casing design of the camera. The final result of this camera can be seen in the image below.
 
-![Final Result](/images/esp32cam/Final-1.png)
+![Final Result](/images/esp32cam/Final-1.jpg)
 
-![Final Result](/images/esp32cam/Final-2.png)
+![Final Result](/images/esp32cam/Final-2.jpg)
 
 If you have input for the development process of this project, feel free write in the comments. Thank you.

@@ -2,7 +2,7 @@
 layout: post
 title:  Why did I end up writing a blog
 author: Dimas Yoga
-categories: [Misc]
+categories: [Miscellaneous]
 ---
 
 Hi everyone !!!. So I am finally got to write my first blog post. Just so you know, I want to write a blog since 2 or 3 years ago, but because I am a very busy person I ended up putting off that plan and doing something else (well, not really busy, just bad time management). Now after I am done with my college life and my thesis project, I have a lot of free time which makes me stressed because I don't know what to do and this coronavirus pandemic still hasn't disappeared. So I thought continuing with my plans for blogging would be the perfect activity for now.
