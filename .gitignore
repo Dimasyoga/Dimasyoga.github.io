@@ -5,10 +5,10 @@ _site
 .bundle
 .sass-cache
 Gemfile.lock
-Gemfile
 node_modules
 package.json
 *.gem
 *.gemspec
 .jekyll-cache
 .vscode
+vendor
