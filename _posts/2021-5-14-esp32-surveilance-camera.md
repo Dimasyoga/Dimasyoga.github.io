@@ -54,7 +54,7 @@ Whereas for RTSP and HTTP, I tend to choose HTTP because it's more versatile and
 
 I use PlatformIO IDE to develop this camera firmware. The main library that I use is [ESPAsyncWebServer](https://github.com/me-no-dev/ESPAsyncWebServer) to create an HTTP server. This server will be used to receive image capture requests and also to present the settings webpage.
 
-The way to take pictures from the camera is quite simple, the client sends an HTTP request to the URL: http: // $ {Camera IP Addr} / capture, then the server will respond with a 1600×1200 pixel RGB image. Then to access the configuration webpage, you can go to the root address of the camera: http: // $ {Camera IP Addr} /, the display of the configuration webpage can be seen in the image below.
+The way to take pictures from the camera is quite simple, the client sends an HTTP request to the URL: http://{Camera IP Addr}/capture, then the server will respond with a 1600×1200 pixel RGB image. Then to access the configuration webpage, you can go to the root address of the camera: http://{Camera IP Addr}/, the display of the configuration webpage can be seen in the image below.
 
 ![Configuration Webpage 1](/images/esp32cam/setting-webpage-1.png)
 
