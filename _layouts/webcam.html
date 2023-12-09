@@ -90,12 +90,12 @@ layout: default
         let ranges = [0, 255];
         let b_hist = new cv.Mat(), g_hist = new cv.Mat(), r_hist = new cv.Mat();
         let mask_b = new cv.Mat(), mask_g = new cv.Mat(), mask_r = new cv.Mat();
-        let color_r = new cv.Scalar(255, 0, 0), color_g = new cv.Scalar(0, 255, 0), color_b = new cv.Scalar(0, 0, 255);
+        let color_r = new cv.Scalar(0, 0, 255), color_g = new cv.Scalar(0, 255, 0), color_b = new cv.Scalar(255, 0, 0);
         let scale = 2;
         // You can try more different parameters
-        cv.calcHist(srcVec, [2], mask_r, r_hist, histSize, ranges, accumulate);
         cv.calcHist(srcVec, [0], mask_b, b_hist, histSize, ranges, accumulate);
         cv.calcHist(srcVec, [1], mask_g, g_hist, histSize, ranges, accumulate);
+        cv.calcHist(srcVec, [2], mask_r, r_hist, histSize, ranges, accumulate);
         
 
         let result_b = cv.minMaxLoc(b_hist, mask_b);
