@@ -1,32 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Webcam Video with OpenCV</title>
-    <style>
-        video {
-            width: 100%;
-            max-width: 640px;
-            margin: 20px 0;
-            display: block;
-        }
-    </style>
-</head>
-<body>
+---
+layout: default
+---
+
+<script async src="https://docs.opencv.org/master/opencv.js" onload="onOpenCvReady();" type="text/javascript"></script>
+
+<div id="container">
 
 <video id="webcamVideo" autoplay playsinline></video>
 <canvas id="outputCanvas" width="640" height="480"></canvas>
+<canvas id="histogramCanvas" width="640" height="100"></canvas>
 
-<script src="https://docs.opencv.org/4.8.0/opencv.js" onload="onOpenCvReady();" type="text/javascript"></script>
+</div>
 
 <script>
-    let video, outputCanvas, outputCtx;
+    let video, outputCanvas, outputCtx, histogramCanvas, histogramCtx;
 
     document.addEventListener('DOMContentLoaded', () => {
         video = document.getElementById('webcamVideo');
         outputCanvas = document.getElementById('outputCanvas');
         outputCtx = outputCanvas.getContext('2d');
+        histogramCanvas = document.getElementById('histogramCanvas');
+        histogramCtx = histogramCanvas.getContext('2d');
 
         if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
             navigator.mediaDevices.getUserMedia({ video: true })
@@ -57,18 +51,25 @@
     }
 
     function startProcessing() {
-        const cap = new cv.VideoCapture(video);
-
         function processVideo() {
-            cap.read(outputCanvas);
-            // Add your OpenCV processing code here
+            outputCtx.drawImage(video, 0, 0, outputCanvas.width, outputCanvas.height);
+
+            // Get image data from canvas
+            const imageData = outputCtx.getImageData(0, 0, outputCanvas.width, outputCanvas.height);
+
+            // Convert the image data to a cv.Mat
+            const src = cv.matFromImageData(imageData);
 
             // Example: Convert the image to grayscale
-            const src = cv.imread(outputCanvas);
             const dst = new cv.Mat();
-            cv.cvtColor(src, dst, cv.COLOR_RGBA2GRAY);
+            cv.cvtColor(src, dst, cv.COLOR_RGBA2GRAY, 0);
+
+            // Display the processed image on the canvas
             cv.imshow(outputCanvas, dst);
 
+            displayHistogram(src)
+
+            // Release Mats
             src.delete();
             dst.delete();
 
@@ -77,7 +78,59 @@
 
         processVideo();
     }
-</script>
 
-</body>
-</html>
+    function displayHistogram(image) {
+        let srcVec = new cv.MatVector();
+        srcVec.push_back(image);
+        srcVec.push_back(image);
+        srcVec.push_back(image);
+        let accumulate = false;
+        let channels = [0];
+        let histSize = [256];
+        let ranges = [0, 255];
+        let b_hist = new cv.Mat(), g_hist = new cv.Mat(), r_hist = new cv.Mat();
+        let mask_b = new cv.Mat(), mask_g = new cv.Mat(), mask_r = new cv.Mat();
+        let color_r = new cv.Scalar(255, 0, 0), color_g = new cv.Scalar(0, 255, 0), color_b = new cv.Scalar(0, 0, 255);
+        let scale = 2;
+        // You can try more different parameters
+        cv.calcHist(srcVec, [2], mask_r, r_hist, histSize, ranges, accumulate);
+        cv.calcHist(srcVec, [0], mask_b, b_hist, histSize, ranges, accumulate);
+        cv.calcHist(srcVec, [1], mask_g, g_hist, histSize, ranges, accumulate);
+        
+
+        let result_b = cv.minMaxLoc(b_hist, mask_b);
+        let max_b = result_b.maxVal;
+
+        let result_g = cv.minMaxLoc(g_hist, mask_g);
+        let max_g = result_g.maxVal;
+
+        let result_r = cv.minMaxLoc(r_hist, mask_r);
+        let max_r = result_r.maxVal;
+
+        let dst = new cv.Mat.zeros(image.rows, histSize[0] * scale, cv.CV_8UC3);
+
+        // draw histogram
+        for (let i = 1; i < histSize[0]; i++) {
+            let b_binVal1 = b_hist.data32F[i-1] * image.rows / max_b;
+            let b_point1 = new cv.Point((i - 1) * scale - 1, image.rows - b_binVal1);
+            let b_binVal2 = b_hist.data32F[i] * image.rows / max_b;
+            let b_point2 = new cv.Point((i) * scale - 1, image.rows - b_binVal2);
+            cv.line(dst, b_point1, b_point2, color_b);
+
+            let g_binVal1 = g_hist.data32F[i-1] * image.rows / max_g;
+            let g_point1 = new cv.Point((i - 1) * scale - 1, image.rows - g_binVal1);
+            let g_binVal2 = g_hist.data32F[i] * image.rows / max_g;
+            let g_point2 = new cv.Point((i) * scale - 1, image.rows - g_binVal2);
+            cv.line(dst, g_point1, g_point2, color_g);
+
+            let r_binVal1 = r_hist.data32F[i-1] * image.rows / max_r;
+            let r_point1 = new cv.Point((i - 1) * scale - 1, image.rows - r_binVal1);
+            let r_binVal2 = r_hist.data32F[i] * image.rows / max_r;
+            let r_point2 = new cv.Point((i) * scale - 1, image.rows - r_binVal2);
+            cv.line(dst, r_point1, r_point2, color_r);
+        }
+
+        cv.imshow(histogramCanvas, dst);
+        dst.delete(); srcVec.delete(); b_hist.delete(); g_hist.delete(); r_hist.delete();
+    }
+</script>
