@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webcam Video with OpenCV</title>
+    <style>
+        video {
+            width: 100%;
+            max-width: 640px;
+            margin: 20px 0;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<video id="webcamVideo" autoplay playsinline></video>
+<canvas id="outputCanvas" width="640" height="480"></canvas>
+
+<script src="https://docs.opencv.org/4.8.0/opencv.js" onload="onOpenCvReady();" type="text/javascript"></script>
+
+<script>
+    let video, outputCanvas, outputCtx;
+
+    document.addEventListener('DOMContentLoaded', () => {
+        video = document.getElementById('webcamVideo');
+        outputCanvas = document.getElementById('outputCanvas');
+        outputCtx = outputCanvas.getContext('2d');
+
+        if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then((stream) => {
+                    video.srcObject = stream;
+                    video.onloadedmetadata = () => {
+                        video.play();
+                        onOpenCvReady(); // Ensure OpenCV is ready after video starts
+                    };
+                })
+                .catch((error) => {
+                    console.error('Error accessing webcam:', error);
+                });
+        } else {
+            console.error('getUserMedia is not supported in this browser');
+        }
+    });
+
+    function onOpenCvReady() {
+        // Set up OpenCV.js
+        if (cv.getBuildInformation) {
+            console.log('OpenCV.js is ready');
+            startProcessing();
+        } else {
+            console.log('Waiting for OpenCV.js to load...');
+            setTimeout(onOpenCvReady, 100);
+        }
+    }
+
+    function startProcessing() {
+        const cap = new cv.VideoCapture(video);
+
+        function processVideo() {
+            cap.read(outputCanvas);
+            // Add your OpenCV processing code here
+
+            // Example: Convert the image to grayscale
+            const src = cv.imread(outputCanvas);
+            const dst = new cv.Mat();
+            cv.cvtColor(src, dst, cv.COLOR_RGBA2GRAY);
+            cv.imshow(outputCanvas, dst);
+
+            src.delete();
+            dst.delete();
+
+            requestAnimationFrame(processVideo);
+        }
+
+        processVideo();
+    }
+</script>
+
+</body>
+</html>
